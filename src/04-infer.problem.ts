@@ -1,6 +1,6 @@
 // CODE
 
-import { TypeOf, z } from 'zod'
+import { z } from 'zod'
 
 const StarWarsPerson = z.object({
   name: z.string(),
@@ -11,7 +11,7 @@ const StarWarsPeopleResults = z.object({
 })
 
 const logStarWarsPeopleResults = (
-  data: TypeOf<typeof StarWarsPeopleResults>
+  data: z.infer<typeof StarWarsPeopleResults>
 ) => {
   data.results.map(person => {
     console.log(person.name)
