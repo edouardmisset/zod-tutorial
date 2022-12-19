@@ -7,7 +7,7 @@ import { z } from "zod";
 const doesStarWarsPersonExist = async (id: string) => {
   try {
     const data = await fetch(
-      "https://totaltypescript.com/swapi/people/" + id + ".json",
+      `https://totaltypescript.com/swapi/people/${id}.json`,
     ).then((res) => res.json());
     return Boolean(data?.name);
   } catch (e) {
@@ -17,7 +17,9 @@ const doesStarWarsPersonExist = async (id: string) => {
 };
 
 const Form = z.object({
-  id: z.string(),
+  id: z.string().refine(doesStarWarsPersonExist, {
+    message: "Not found"
+  }),
   //           ^ 🕵️‍♂️
 });
 
