@@ -6,7 +6,6 @@ import { z } from 'zod'
 const Form = z.object({
   repoName: z.string(),
   privacyLevel: z.enum(['private', 'public']),
-  //              ^ 🕵️‍♂️
 })
 
 export const validateFormInput = (values: unknown) => {
